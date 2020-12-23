@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+
+
+</head>
+<body >
+    Feel free to comment us!<br><br>
+    <script>
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyCJcRqmou7Z9g2bGSrAPzvUCqhXpx8RCAQ",
+    authDomain: "contact-b06e4.firebaseapp.com",
+    projectId: "contact-b06e4",
+    storageBucket: "contact-b06e4.appspot.com",
+    messagingSenderId: "249860417652",
+    appId: "1:249860417652:web:7e5bf0b043176884af0921"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+
+  
+  
+  function sendMessage(){
+
+ var message = document.getElementById("message").value;
+ var email = document.getElementById("email").value;
+ var myName = document.getElementById("myName").value;
+ firebase.database().ref("messages").push().set({
+     "sender": myName,
+     "message": message,
+     "email":email
+ })
+   alert("Your comment has been sent.. You will recieve a e-mail in some days!!")
+
+      return false;
+  }
+</script>
+<form onsubmit="return sendMessage();">
+    <input id="myName" type="text"
+     placeholder="Name" autocomplete="off"/><br><br>
+    <input id="email" type="email" placeholder="e-mail" autocomplete="off"/><br><br>
+    <input id="message" type="text" placeholder="Enter comment" autocomplete="off"/><br><br>
+    <input type="submit"/> 
+   
+</form>
+<!--start of the style for the css-->
+<style>
+  
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+    
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background-image: url("https://wallpapercave.com/wp/wp661789.png");
+    
+    background-position: center;
+ 
+ 
+  text-align: center;
+ font-size:150%;
+ 
+ 
+}
+
+   input[type=submit] {
+  background: rgb(0, 127, 253);
+  width: 100%;
+  padding: 2vh;
+  border: none;
+  cursor: pointer;
+  color:white;
+  border-radius: 4px 4px;
+  font-size: large;
+}
+
+
+    input[type=email]{
+        padding: 12px 25px;
+        font-size: large;
+        ;
+    }
+    input[type=text]{
+        padding: 12px 25px;
+        font-size: large;
+    }
+  
+
+</style>
+<!--end of the css style for the comment-->
+</body>
+</html>
